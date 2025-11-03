@@ -14,9 +14,9 @@ Acess Control Lists Next For Clash, Based on ACL4SSR Mannix
    - DIRECT
    - REJECT
  - ⚡ 智能
-   - proxies
+   - （传入的节点）
  - 👆🏻 手动
-   - proxies
+   - （传入的节点）
  - 🛩️ 直连
    - DIRECT
    - REJECT
