@@ -1,4 +1,5 @@
-﻿DOMAIN-SUFFIX,viayoo.com
+﻿;国内网站（额外）
+DOMAIN-SUFFIX,viayoo.com
 DOMAIN-SUFFIX,samsungcloudcn.com
 DOMAIN-SUFFIX,immersivetranslate.com
 DOMAIN-SUFFIX,idcflare.com
