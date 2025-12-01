@@ -1,4 +1,4 @@
-﻿;Google AI Studio、Google Gemini 应用
+﻿# Google AI Studio、Google Gemini 应用
 DOMAIN-SUFFIX,aisandbox-pa.googleapis.com
 DOMAIN-SUFFIX,aisandbox-pa.clients6.google.com
 DOMAIN-SUFFIX,people-pa.googleapis.com
@@ -18,6 +18,6 @@ DOMAIN-SUFFIX,locationhistory-pa.clients6.google.com
 DOMAIN-SUFFIX,prod-lt-playstoregatewayadapter-pa.googleapis.com
 DOMAIN-SUFFIX,prod-lt-playstoregatewayadapter-pa.clients6.google.com
 
-;LLM 竞技场
+# LLM 竞技场
 DOMAIN-SUFFIX,lmarena.ai
 DOMAIN-SUFFIX,redarena.ai
