@@ -21,3 +21,6 @@ DOMAIN-SUFFIX,prod-lt-playstoregatewayadapter-pa.clients6.google.com
 # LLM 竞技场
 DOMAIN-SUFFIX,lmarena.ai
 DOMAIN-SUFFIX,redarena.ai
+
+# Edge AI
+DOMAIN-SUFFIX,edge.microsoft.com
