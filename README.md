@@ -1,5 +1,5 @@
 # ACL-Next
-Acess Control Lists Next For Clash, Based on ACL4SSR Mannix
+Acess Control Lists Next For Clash, Based on ACL4SSR Mannix.
 
 ## 分类
 
@@ -73,7 +73,6 @@ Acess Control Lists Next For Clash, Based on ACL4SSR Mannix
    - 🛩️ 直连
    - ✈️ 代理
    - （已有的国家分类）
- - 🔓 解锁⚡
  - 🔓 解锁👆🏻
  - 🇨🇳 中国⚡
  - 🇨🇳 中国👆🏻
