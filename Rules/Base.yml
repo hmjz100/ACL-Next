@@ -1,0 +1,68 @@
+﻿mode: rule # 规则匹配模式
+allow-lan: true # 允许局域网连接
+log-level: debug # 日志级别：调试
+unified-delay: true # 统一延迟计算（取二次测试平均值）
+tcp-concurrent: true # TCP 并发连接（加速握手）
+etag-support: true # ETag 缓存（减少更新流量）
+global-client-fingerprint: random # 客户端指纹（随机）
+external-controller: 0.0.0.0:9090 # 外部控制端口（允许所有 IP 访问）
+mixed-port: 4269 # 混合代理端口
+external-controller-cors: # 面板跨域设置
+  allow-private-network: true
+profile:
+  store-selected: true # 存储选中的代理节点
+  store-fake-ip: true # 存储 Fake-IP 映射，加速重启后的解析
+dns:
+  enable: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  respect-rules: true # 让规则引擎先判定直连还是代理
+  prefer-h3: true # 如果你的 DNS 支持 HTTP/3，开启后速度更快
+  default-nameserver: # 域名解析服务域名解析，必须是 IP
+    - system
+    - 223.6.6.6 # 阿里
+    - 2400:3200::1 # 阿里
+    - 119.29.29.29 # 腾讯
+    - 2402:4e00::2 # 腾讯
+    - 2001:4860:4860::8888 # Google
+    - 8.8.8.8 # Google
+    - 2606:4700:4700::11111 # Cloudflare
+    - 1.1.1.1 # Cloudflare
+  nameserver: # 主要域名解析
+    - https://chrome.cloudflare-dns.com/dns-query # Cloudflare
+    - https://unfiltered.adguard-dns.com/dns-query # AdGuard
+    - https://dns.alidns.com/dns-query # 阿里
+    - https://doh.pub/dns-query # 腾讯
+  fallback-filter: # 回退规则
+    geoip: true
+    geoip-code: CN # 如果解析出非此 code 的 IP，则回退
+    ipcidr:
+      - 240.0.0.0/4
+      - 0.0.0.0/32
+    domain:
+      - +.google.com
+      - +.facebook.com
+      - +.youtube.com
+      - +.githubusercontent.com
+      - +.googlevideo.com
+  fallback: # 回退域名解析
+    - https://dns.google/dns-query # Google
+    - https://wikimedia-dns.org/dns-query # 维基媒体
+    - https://dns.cloudflare.com/dns-query # Cloudflare
+    - https://unfiltered.adguard-dns.com/dns-query # AdGuard
+  direct-nameserver: # 直连域名解析
+    - https://doh.pub/dns-query # 腾讯
+    - https://dns.alidns.com/dns-query # 阿里
+    - https://xxx.ddd.oaifree.com/query-dns # LINUX DO
+    - https://chrome.cloudflare-dns.com/dns-query # Cloudflare
+  proxy-server-nameserver: # 代理节点域名解析
+    - https://dns.alidns.com/dns-query # 阿里
+    - tls://223.5.5.5 # 阿里
+    - 223.5.5.5 # 阿里
+    - https://doh.pub/dns-query # 腾讯
+    - tls://dot.pub # 腾讯
+    - 119.29.29.29 # 腾讯
+    - https://dns.google/dns-query # Google
+    - https://wikimedia-dns.org/dns-query # 维基媒体
+    - https://dns.cloudflare.com/dns-query # Cloudflare
+    - https://unfiltered.adguard-dns.com/dns-query # AdGuard
