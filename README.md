@@ -31,7 +31,7 @@ Acess Control Lists Next For Clash, Based on ACL4SSR Mannix.
    - 🚫 阻断
  - 🌐🤖 人工智能
    - 🇺🇸 美国⚡👆🏻
-   - 🔓 解锁⚡👆🏻
+   - 🔓 解锁👆🏻
    - 🇬🇧 英国⚡👆🏻
    - 🇫🇷 法国⚡👆🏻
    - 🇹🇼 中国台湾⚡👆🏻
@@ -43,7 +43,7 @@ Acess Control Lists Next For Clash, Based on ACL4SSR Mannix.
  - 🌐🎮 游戏平台
    - ✈️ 代理
    - 🛩️ 直连
-   - 🔓 解锁⚡👆🏻
+   - 🔓 解锁👆🏻
    - （已有的国家分类）
  - 🌐📺 哔哩哔哩
    - 🛩️ 直连
@@ -51,7 +51,7 @@ Acess Control Lists Next For Clash, Based on ACL4SSR Mannix.
    - 🇲🇴 中国澳门⚡👆🏻
    - 🇹🇼 中国台湾⚡👆🏻
    - 🇨🇳 中国⚡👆🏻
-   - 🔓 解锁⚡👆🏻
+   - 🔓 解锁👆🏻
    - ✈️ 代理
  - 🌐📺 哔哩哔哩 港澳台
    - 🛩️ 直连
@@ -59,7 +59,7 @@ Acess Control Lists Next For Clash, Based on ACL4SSR Mannix.
    - 🇲🇴 中国澳门⚡👆🏻
    - 🇹🇼 中国台湾⚡👆🏻
    - 🇨🇳 中国⚡👆🏻
-   - 🔓 解锁⚡👆🏻
+   - 🔓 解锁👆🏻
    - ✈️ 代理
  - 🌐Ⓜ️ Microsoft
    - 🛩️ 直连
