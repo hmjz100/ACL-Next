@@ -3,6 +3,13 @@
 # 内容分发网络 (CDN)
 DOMAIN-SUFFIX,cdn.jsdelivr.net
 
+# 域名查询服务 (DNS)
+DOMAIN,dns.cloudflare.com
+DOMAIN-SUFFIX,cloudflare-dns.com
+DOMAIN,dns.google
+DOMAIN,wikimedia-dns.org
+DOMAIN-SUFFIX,adguard-dns.com
+
 # 开发与托管
 DOMAIN-KEYWORD,replit
 DOMAIN-SUFFIX,awswaf.com
