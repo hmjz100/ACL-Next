@@ -86,9 +86,9 @@ DOMAIN-SUFFIX,wpmirror.com
 DOMAIN-SUFFIX,wptea.com
 
 # 效率工具
+# DOMAIN-SUFFIX,dler.io
 DOMAIN-SUFFIX,base64.us
 DOMAIN-SUFFIX,cloudflareperf.com
-DOMAIN-SUFFIX,dler.io
 DOMAIN-SUFFIX,immersivetranslate.cn
 DOMAIN-SUFFIX,immersivetranslate.com
 DOMAIN-SUFFIX,ip138.com
