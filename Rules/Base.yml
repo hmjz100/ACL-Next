@@ -1,4 +1,4 @@
-﻿mode: rule # 规则匹配模式
+mode: rule # 规则匹配模式
 allow-lan: true # 允许局域网连接
 log-level: debug # 日志级别：调试
 unified-delay: true # 统一延迟计算（取二次测试平均值）
