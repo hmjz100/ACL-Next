@@ -1,6 +1,8 @@
 ﻿# Google AI Studio、Google Gemini 应用…
 DOMAIN-KEYWORD,-pa.googleapis.com
 DOMAIN-KEYWORD,-pa.clients6.googleapis.com
+DOMAIN-KEYWORD,-pa.google.com
+DOMAIN-KEYWORD,-pa.clients6.google.com
 
 # LLM 竞技场
 DOMAIN-SUFFIX,lmarena.ai
