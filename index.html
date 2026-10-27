@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ACL-Next 订阅链接转换</title>
+	<link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
+	<script src="https://gcore.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+	<script src="https://gcore.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
+	<script src="https://gcore.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+	<style>
+		body {
+			background-color: #f3f4f5;
+			padding-top: 30px;
+			padding-bottom: 50px;
+		}
+
+		.main-container {
+			max-width: 900px;
+			margin: 0 auto;
+		}
+
+		.url-item {
+			margin-bottom: 10px !important;
+			display: flex !important;
+			align-items: center;
+		}
+
+		.drag-handle {
+			cursor: grab;
+			padding: 0 15px;
+			color: #ccc;
+			transition: color 0.2s;
+		}
+
+		.drag-handle:hover {
+			color: #2185d0;
+		}
+
+		.sortable-ghost {
+			opacity: 0.4;
+			background: #e0e0e0;
+		}
+
+		.sortable-chosen {
+			background: #f9f9f9;
+		}
+
+		textarea {
+			font-family: 'Cascadia Code', 'Consolas', monospace !important;
+			font-size: 0.9em !important;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="ui container main-container">
+		<h2 class="ui center aligned icon header">
+			<i class="sync alternate icon"></i>
+			<div class="content">
+				订阅链接转换 & 深度排序
+				<div class="sub header">支持多链接智能合并、去重以及参数化配置</div>
+			</div>
+		</h2>
+
+		<div class="ui negative message" id="cdn-warning" style="display: none;">
+			<div class="header">页面资源加载失败</div>
+			<p>未能从 CDN 加载 jQuery / Semantic UI。下拉框已自动降级为原生选择器，
+				但依赖 jQuery 的按钮可能不可用，请检查网络或代理后刷新本页。</p>
+		</div>
+
+		<div class="ui segment" id="input-section">
+			<div class="ui form">
+				<div class="two fields">
+					<div class="field">
+						<label>后端接口 (Base API)</label>
+						<div class="ui selection dropdown" id="base-api-dropdown">
+							<input type="hidden" name="baseApi" value="https://api.asailor.org/sub">
+							<i class="dropdown icon"></i>
+							<div class="text">api.asailor.org</div>
+							<div class="menu">
+							<div class="item" data-value="https://api.asailor.org/sub">api.asailor.org</div>
+							<div class="item" data-value="https://api.subconverter.cc/sub">api.subconverter.cc</div>
+							<div class="item" data-value="custom">手动输入...</div>
+							</div>
+						</div>
+					</div>
+					<div class="field">
+						<label>GitHub 代理前缀</label>
+						<div class="ui selection dropdown" id="ghproxy-dropdown">
+							<input type="hidden" name="ghProxy" id="ghproxy-value" value="https://ghproxy.xyz/">
+							<i class="dropdown icon"></i>
+							<div class="text">ghproxy.xyz (推荐)</div>
+							<div class="menu">
+							<div class="item" data-value="https://ghproxy.xyz/">ghproxy.xyz (推荐)</div>
+							<div class="item" data-value="https://ghproxy.net/">ghproxy.net</div>
+							<div class="item" data-value="https://ghproxy.vip/">ghproxy.vip</div>
+							<div class="item" data-value="https://gh-proxy.org/">gh-proxy.org</div>
+							<div class="item" data-value="https://mirror.ghproxy.com/">mirror.ghproxy.com</div>
+							<div class="item" data-value="https://github.moeyy.xyz/">github.moeyy.xyz</div>
+							<div class="item" data-value="none">不使用代理</div>
+							<div class="item" data-value="custom">手动输入...</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="field" id="custom-api-field" style="display: none;">
+					<label>自定义后端</label>
+					<input type="text" id="custom-api-url" placeholder="https://your-api.com/sub">
+				</div>
+				<div class="field" id="custom-ghproxy-field" style="display: none;">
+					<label>自定义 GitHub 代理前缀</label>
+					<input type="text" id="custom-ghproxy-url" placeholder="https://your-proxy.com/">
+				</div>
+				<div class="two fields">
+					<div class="field">
+						<label>转换配置 (External Config)</label>
+						<div class="ui selection dropdown" id="config-dropdown">
+							<input type="hidden" name="extConfig" id="ext-config-value" value="https://raw.githubusercontent.com/hmjz100/ACL-Next/main/ACL-Next.toml">
+							<i class="dropdown icon"></i>
+							<div class="text">完整版 (TOML · 推荐)</div>
+							<div class="menu">
+							<div class="item" data-value="https://raw.githubusercontent.com/hmjz100/ACL-Next/main/ACL-Next.toml">完整版 (TOML · 推荐)</div>
+							<div class="item" data-value="https://raw.githubusercontent.com/hmjz100/ACL-Next/main/ACL-Next.Lite.toml">精简版 (TOML)</div>
+							<div class="item" data-value="https://raw.githubusercontent.com/hmjz100/ACL-Next/main/ACL-Next.ini">完整版 (INI · 兼容旧后端)</div>
+							<div class="item" data-value="https://raw.githubusercontent.com/hmjz100/ACL-Next/main/ACL-Next.Lite.ini">精简版 (INI · 兼容旧后端)</div>
+							<div class="item" data-value="none">不加载配置</div>
+							</div>
+						</div>
+					</div>
+					<div class="field">
+						<label>输入方式</label>
+						<div class="ui selection dropdown" id="input-type-dropdown">
+							<input type="hidden" name="inputType" value="api">
+							<i class="dropdown icon"></i>
+							<div class="text">现有转换 URL (支持多行)</div>
+							<div class="menu">
+							<div class="item" data-value="api">现有转换 URL (支持多行)</div>
+							<div class="item" data-value="raw">原始链接列表 (每行一条)</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="field">
+					<label>后端附加参数 (每行一个 key=value)</label>
+					<textarea id="api-params" rows="3" placeholder="insert=true&#10;fdn=true&#10;sort=true">insert=true&#10;fdn=true&#10;sort=true</textarea>
+				</div>
+
+				<div class="field" id="api-input-field">
+					<label>粘贴已有的完整 URL (支持多行，自动提取并去重)</label>
+					<textarea id="api-urls" rows="4" placeholder="支持粘贴多个不同的订阅转换链接..."></textarea>
+				</div>
+
+				<div class="field" id="raw-input-field" style="display: none;">
+					<label>原始订阅链接列表</label>
+					<textarea id="raw-urls" rows="4" placeholder="http://example.com/sub1&#10;http://example.com/sub2"></textarea>
+				</div>
+
+				<button class="ui primary fluid button" id="btn-parse">进入编辑模式</button>
+			</div>
+		</div>
+
+		<div class="ui positive message" id="result-section" style="display: none;">
+			<div class="header">生成成功</div>
+			<p>新的订阅链接已根据当前排序和参数重新构建：</p>
+			<div class="ui action input fluid">
+				<input type="text" id="final-url" readonly>
+				<button class="ui teal right labeled icon button" id="btn-copy">
+					<i class="copy icon"></i> 复制
+				</button>
+			</div>
+		</div>
+
+		<div class="ui segment" id="edit-section" style="display: none;">
+			<div class="ui message info">
+				<i class="info circle icon"></i> 拖动 <i class="content icon"></i> 排序，管理链接后点击生成。
+			</div>
+			<h3 class="ui dividing header">链接管理</h3>
+
+			<div id="url-list-container">
+			</div>
+
+			<div class="ui divider"></div>
+			<button class="ui green button" id="btn-add"><i class="plus icon"></i> 添加链接</button>
+			<button class="ui blue right floated button" id="btn-generate">生成最终链接</button>
+		</div>
+	</div>
+
+	<script>
+		$(document).ready(function () {
+			let sortable = null;
+
+			// GitHub 加速前缀：解析时统一剥离，生成时按需还原
+			const GH_PROXY_PREFIXES = [
+				/^https?:\/\/ghproxy\.vip\//i,
+				/^https?:\/\/gh-proxy\.org\//i,
+				/^https?:\/\/ghproxy\.net\//i,
+				/^https?:\/\/mirror\.ghproxy\.com\//i,
+				/^https?:\/\/github\.moeyy\.xyz\//i,
+			];
+			// 取当前生效的 GitHub 代理前缀；返回 '' 表示不套代理
+			function getGhProxy() {
+				const v = $('#ghproxy-value').val();
+				if (v === 'none') return '';
+				if (v === 'custom') {
+					const c = ($('#custom-ghproxy-url').val() || '').trim();
+					if (!c) return '';
+					return c.endsWith('/') ? c : c + '/';
+				}
+				return v || '';
+			}
+
+			function stripProxy(url) {
+				let out = url.trim();
+				for (const re of GH_PROXY_PREFIXES) out = out.replace(re, '');
+				return out;
+			}
+
+			// Semantic UI 的 dropdown 必须显式初始化才会绑定点击事件；
+			// 少了初始化，整个下拉框就是个打不开的 div。
+			// 同时要探测 CDN：$.fn.dropdown 不存在时不能调用，否则会抛 TypeError
+			// 并中断后面所有事件绑定（由页面底部的原生 <select> 兜底脚本接管）。
+			if ($.fn.dropdown) {
+				// 后端选择逻辑
+				$('#base-api-dropdown').dropdown({
+					onChange: function (value) {
+						if (value === 'custom') {
+							$('#custom-api-field').show();
+						} else {
+							$('#custom-api-field').hide();
+						}
+					}
+				});
+
+				// GitHub 代理前缀
+				$('#ghproxy-dropdown').dropdown({
+					onChange: function (value) {
+						if (value === 'custom') {
+							$('#custom-ghproxy-field').show();
+						} else {
+							$('#custom-ghproxy-field').hide();
+						}
+					}
+				});
+
+				// 转换配置选择（INI / TOML / 不加载）
+				$('#config-dropdown').dropdown();
+
+				// 输入类型切换
+				$('#input-type-dropdown').dropdown({
+					onChange: function (value) {
+						if (value === 'api') {
+							$('#api-input-field').show();
+							$('#raw-input-field').hide();
+						} else {
+							$('#api-input-field').hide();
+							$('#raw-input-field').show();
+						}
+					}
+				});
+			}
+
+			// 解析核心逻辑
+			$('#btn-parse').click(function () {
+				const initialUrls = new Set();
+				const type = $('#input-type-dropdown input[name="inputType"]').val();
+
+				if (type === 'api') {
+					$('#api-urls').val().split('\n').forEach(line => {
+						const trimmed = line.trim();
+						if (!trimmed) return;
+						try {
+							const urlObj = new URL(trimmed);
+							const urlParam = new URLSearchParams(urlObj.search).get('url');
+							if (urlParam) {
+								// 多链接合并的情况，逐条拆分并去重
+								urlParam.split('|').forEach(u => {
+									const cleanUrl = stripProxy(decodeURIComponent(u));
+									if (cleanUrl) initialUrls.add(cleanUrl);
+								});
+							} else if (/^https?:\/\//i.test(urlObj.href)) {
+								// 没有 url= 参数时，按普通订阅链接处理
+								initialUrls.add(stripProxy(urlObj.href));
+							}
+						} catch (e) {
+							console.error("解析失败的行:", trimmed);
+						}
+					});
+				} else {
+					$('#raw-urls').val().split('\n').forEach(line => {
+						const u = stripProxy(line);
+						if (u) initialUrls.add(u);
+					});
+				}
+
+				if (initialUrls.size === 0) return alert("未检测到有效链接");
+
+				renderList(Array.from(initialUrls));
+				$('#result-section').hide();
+				$('#input-section').hide();
+				$('#edit-section').show();
+
+				if (sortable) sortable.destroy();
+				sortable = Sortable.create(document.getElementById('url-list-container'), {
+					handle: '.drag-handle',
+					animation: 150
+				});
+			});
+
+			function renderList(urls) {
+				const container = $('#url-list-container');
+				container.empty();
+				urls.forEach(url => addUrlRow(url));
+			}
+
+			function addUrlRow(url = '') {
+				const row = document.createElement('div');
+				row.className = 'ui action input fluid url-item';
+
+				const handle = document.createElement('div');
+				handle.className = 'drag-handle';
+				handle.innerHTML = '<i class="content icon"></i>';
+
+				const input = document.createElement('input');
+				input.type = 'text';
+				input.className = 'url-input-val';
+				input.placeholder = '请输入订阅地址';
+				input.value = url;
+
+				const remove = document.createElement('button');
+				remove.className = 'ui icon red button btn-remove';
+				remove.innerHTML = '<i class="minus icon"></i>';
+
+				row.appendChild(handle);
+				row.appendChild(input);
+				row.appendChild(remove);
+				$('#url-list-container').append(row);
+			}
+
+			$(document).on('click', '.btn-remove', function () {
+				$(this).closest('.url-item').remove();
+			});
+
+			$('#btn-add').click(function () {
+				addUrlRow();
+			});
+
+			// 生成最终链接
+			$('#btn-generate').click(function () {
+				const seen = new Set();
+				const urls = [];
+				const ghProxy = getGhProxy();
+				$('.url-input-val').each(function () {
+					const val = stripProxy($(this).val());
+					if (!val || seen.has(val)) return;
+					seen.add(val);
+					// 仅对 GitHub 域名套代理前缀；目标必须带 scheme，
+					// 否则拼出来是 https://ghproxy.xyz/github.com/... 这种无效地址
+					if (ghProxy && /^(https?:\/\/)?(github\.com|gist\.github\.com)\//i.test(val)) {
+						const withScheme = /^https?:\/\//i.test(val) ? val : 'https://' + val;
+						urls.push(ghProxy + withScheme);
+					} else {
+						urls.push(val);
+					}
+				});
+
+				if (urls.length === 0) return alert("至少需要一个有效的订阅链接");
+
+				let baseUrl = $('#base-api-dropdown input[name="baseApi"]').val();
+				if (baseUrl === 'custom') baseUrl = $('#custom-api-url').val().trim();
+				if (!baseUrl) return alert("后端地址不能为空");
+
+				try {
+					const finalUrl = new URL(baseUrl);
+
+					// 1. 注入用户在文本框定义的参数（按首个 = 切分，值中可再含 = ）
+					$('#api-params').val().split('\n').forEach(line => {
+						const trimmed = line.trim();
+						const eq = trimmed.indexOf('=');
+						if (eq <= 0) return;
+						const key = trimmed.slice(0, eq).trim();
+						if (key) finalUrl.searchParams.set(key, trimmed.slice(eq + 1).trim());
+					});
+
+					// 2. 强制覆盖：这两项必须符合要求
+					finalUrl.searchParams.set('target', 'clash');
+					finalUrl.searchParams.set('list', 'false');
+
+					// 3. 注入外部转换配置（可切换 TOML / INI / 不加载）
+					const extConfig = $('#ext-config-value').val();
+					if (extConfig && extConfig !== 'none') {
+						finalUrl.searchParams.set('config', extConfig);
+					} else {
+						finalUrl.searchParams.delete('config');
+					}
+
+					// 4. 注入订阅链接列表 (使用 | 分割)
+					// URLSearchParams 会自动转义，但多个 url 间的 | 手动拼接以兼容部分后端
+					let finalLink = finalUrl.toString();
+					finalLink += (finalLink.includes('?') ? '&' : '?') + "url=" + urls.map(u => encodeURIComponent(u)).join('|');
+
+					$('#final-url').val(finalLink);
+					$('#result-section').slideDown();
+					window.scrollTo(0, 0);
+				} catch (e) {
+					alert("后端 URL 格式无效，请检查输入！");
+				}
+			});
+
+			$('#btn-copy').click(async function () {
+				const input = document.getElementById('final-url');
+				const btn = $(this);
+				const succeed = () => {
+					btn.addClass('disabled').html('<i class="check icon"></i> 已复制');
+					setTimeout(() => {
+						btn.removeClass('disabled').html('<i class="copy icon"></i> 复制');
+					}, 2000);
+				};
+				const fallback = () => {
+					input.focus();
+					input.select();
+					input.setSelectionRange(0, input.value.length);
+					if (document.execCommand('copy')) succeed();
+					else alert("复制失败，请手动选中后复制。");
+				};
+				try {
+					if (navigator.clipboard && window.isSecureContext) {
+						await navigator.clipboard.writeText(input.value);
+						succeed();
+					} else {
+						fallback();
+					}
+				} catch (e) {
+					fallback();
+				}
+			});
+		});
+	</script>
+
+	<script>
+		// 兜底：CDN 上 Semantic UI 的 JS 没加载成功时，.ui.selection.dropdown
+		// 只是个打不开的 div。这里用原生 <select> 整体替换，并保持隐藏 input 同步，
+		// 上方 jQuery 读取 $('#xxx-value').val() 的逻辑无需任何改动。
+		// 不依赖 jQuery，确保 jQuery 本身挂掉时也能执行。
+		(function () {
+			function onReady(fn) {
+				if (document.readyState !== 'loading') fn();
+				else document.addEventListener('DOMContentLoaded', fn);
+			}
+
+			function toggle(id, show) {
+				var el = document.getElementById(id);
+				if (el) el.style.display = show ? '' : 'none';
+			}
+
+			onReady(function () {
+				// 正常路径：jQuery 与 Semantic UI 都在，什么都不做
+				if (window.jQuery && window.jQuery.fn && window.jQuery.fn.dropdown) return;
+
+				var warn = document.getElementById('cdn-warning');
+				if (warn) warn.style.display = '';
+
+				document.querySelectorAll('.ui.selection.dropdown').forEach(function (node) {
+					var hidden = node.querySelector('input[type="hidden"]');
+					var menu = node.querySelector('.menu');
+					var textEl = node.querySelector('.text');
+					if (!hidden || !menu) return;
+
+					var sel = document.createElement('select');
+					sel.className = 'ui dropdown';
+					sel.style.width = '100%';
+					menu.querySelectorAll('.item').forEach(function (it) {
+						var o = document.createElement('option');
+						o.value = it.getAttribute('data-value') || '';
+						o.textContent = (it.textContent || '').trim();
+						sel.appendChild(o);
+					});
+					sel.value = hidden.value;
+
+					node.style.display = 'none';
+					node.parentNode.insertBefore(sel, node.nextSibling);
+
+					sel.addEventListener('change', function () {
+						hidden.value = sel.value;
+						if (textEl) {
+							textEl.textContent = sel.options[sel.selectedIndex].textContent;
+						}
+						if (node.id === 'base-api-dropdown') {
+							toggle('custom-api-field', sel.value === 'custom');
+						}
+						if (node.id === 'ghproxy-dropdown') {
+							toggle('custom-ghproxy-field', sel.value === 'custom');
+						}
+						if (node.id === 'input-type-dropdown') {
+							toggle('api-input-field', sel.value === 'api');
+							toggle('raw-input-field', sel.value !== 'api');
+						}
+					});
+				});
+			});
+		})();
+	</script>
+</body>
+
+</html>
