@@ -1745,7 +1745,7 @@ type = "url-test"
 rule = [
   ".*((Chat)?GPT|Claude|Gemini|GM|Midjourney|OpenAI|Sora)(?!.*[🇦-🇿]{2})",
 ]
-url = "https://cp.cloudflare.com/generate_204"
+url = "https://gemini.google.com"
 interval = 300
 timeout = 5
 tolerance = 100
@@ -1801,7 +1801,7 @@ rule = ["[]🛩️ 直连", "[]🔓 解锁⚡", "[]🔓 解锁👆🏻", "[]✈�
 name = "🇨🇳 中国⚡"
 type = "url-test"
 rule = ["(🇨🇳|🇭🇰|🇲🇴|🇹🇼)(?!.*[🇦-🇿]{2})"]
-url = "https://cp.cloudflare.com/generate_204"
+url = "https://gemini.google.com"
 interval = 300
 timeout = 5
 tolerance = 100
