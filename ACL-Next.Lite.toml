@@ -15,7 +15,7 @@ exclude_remarks = [
   """
 (Data Left|Remain:|Traffic:|Expir[ey]|Reset|(\\d[\\d.]*\\s*[MG]B[^\\dA-Za-z]+|[:：]\\s*)\\d[\\d.]*\\s*GB(?![\\dA-Za-z])|剩[余餘]流量|流量：|[到过過效]期|[时時][间間]|重置|分割线|残り使用容量|残りデータ通信量|有効期限|リセット|🔰 (ID|HSD|SNI):|📝 Gói:)""",
 ]
-clash_rule_base = "https://raw.githubusercontent.com/hmjz100/ACL-Next/main/Rules/Base.yml?v=0"
+clash_rule_base = "https://raw.githubusercontent.com/hmjz100/ACL-Next/main/Rules/Base.yml?v=1"
 
 [[emoji]]
 match = "(?!🇨🇳)[🇦-🇿]{2}"
@@ -1848,127 +1848,127 @@ overwrite_original_rules = true
 
 [[rulesets]]
 group = "DIRECT"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list?v=0"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list?v=1"
 
 [[rulesets]]
 group = "🛩️ 直连"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/UnBan.list?v=0"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/UnBan.list?v=1"
 
 [[rulesets]]
 group = "🛩️ 直连"
-ruleset = "https://raw.githubusercontent.com/zsokami/ACL4SSR/main/ChinaOnly.list?v=0"
+ruleset = "https://raw.githubusercontent.com/zsokami/ACL4SSR/main/ChinaOnly.list?v=1"
 
 [[rulesets]]
 group = "🛩️ 直连"
-ruleset = "https://raw.githubusercontent.com/zsokami/ACL4SSR/main/UnBan1.list?v=0"
+ruleset = "https://raw.githubusercontent.com/zsokami/ACL4SSR/main/UnBan1.list?v=1"
 
 [[rulesets]]
 group = "🚫 阻断"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list?v=0"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list?v=1"
 
 [[rulesets]]
 group = "🚫 阻断"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanProgramAD.list?v=0"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanProgramAD.list?v=1"
 
 [[rulesets]]
 group = "🚫 阻断"
-ruleset = "https://raw.githubusercontent.com/zsokami/ACL4SSR/main/BanProgramAD1.list?v=0"
+ruleset = "https://raw.githubusercontent.com/zsokami/ACL4SSR/main/BanProgramAD1.list?v=1"
 
 [[rulesets]]
 group = "🛩️ 直连"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/GoogleCN.list?v=0"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/GoogleCN.list?v=1"
 
 [[rulesets]]
 group = "🛩️ 直连"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleFCM.list?v=0"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleFCM.list?v=1"
 
 [[rulesets]]
 group = "🛩️ 直连"
-ruleset = "https://raw.githubusercontent.com/hmjz100/ACL-Next/main/Rules/Google_FCM.list?v=0"
+ruleset = "https://raw.githubusercontent.com/hmjz100/ACL-Next/main/Rules/Google_FCM.list?v=1"
 
 [[rulesets]]
 group = "🛩️ 直连"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/SteamCN.list?v=0"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/SteamCN.list?v=1"
 
 [[rulesets]]
 group = "🌐📺 哔哩哔哩 港澳台"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/BilibiliHMT.list?v=0"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/BilibiliHMT.list?v=1"
 
 [[rulesets]]
 group = "🌐📺 哔哩哔哩"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Bilibili.list?v=0"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Bilibili.list?v=1"
 
 [[rulesets]]
 group = "🌐🤖 人工智能"
-ruleset = "https://raw.githubusercontent.com/hmjz100/ACL-Next/main/Rules/AI.list?v=0"
+ruleset = "https://raw.githubusercontent.com/hmjz100/ACL-Next/main/Rules/AI.list?v=1"
 
 [[rulesets]]
 group = "🌐🤖 人工智能"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/AI.list?v=0"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/AI.list?v=1"
 
 [[rulesets]]
 group = "🌐🤖 人工智能"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/OpenAi.list?v=0"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/OpenAi.list?v=1"
 
 [[rulesets]]
 group = "🌐Ⓜ️ Microsoft Bing"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Bing.list?v=0"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Bing.list?v=1"
 
 [[rulesets]]
 group = "🌐Ⓜ️ Microsoft"
-ruleset = "https://raw.githubusercontent.com/hmjz100/ACL-Next/main/Rules/Microsoft.list?v=0"
+ruleset = "https://raw.githubusercontent.com/hmjz100/ACL-Next/main/Rules/Microsoft.list?v=1"
 
 [[rulesets]]
 group = "🌐Ⓜ️ Microsoft"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Microsoft.list?v=0"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Microsoft.list?v=1"
 
 [[rulesets]]
 group = "🌐Ⓜ️ Microsoft"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/OneDrive.list?v=0"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/OneDrive.list?v=1"
 
 [[rulesets]]
 group = "🌐🍎 Apple"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Apple.list?v=0"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Apple.list?v=1"
 
 [[rulesets]]
 group = "🌐🎮 游戏平台"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Steam.list?v=0"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Steam.list?v=1"
 
 [[rulesets]]
 group = "🌐🎮 游戏平台"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Epic.list?v=0"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Epic.list?v=1"
 
 [[rulesets]]
 group = "🌐🎮 游戏平台"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Origin.list?v=0"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Origin.list?v=1"
 
 [[rulesets]]
 group = "🌐🎮 游戏平台"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Sony.list?v=0"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Sony.list?v=1"
 
 [[rulesets]]
 group = "🌐🎮 游戏平台"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Nintendo.list?v=0"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Nintendo.list?v=1"
 
 [[rulesets]]
 group = "✈️ 代理"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyGFWlist.list?v=0"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyGFWlist.list?v=1"
 
 [[rulesets]]
 group = "✈️ 代理"
-ruleset = "https://raw.githubusercontent.com/hmjz100/ACL-Next/main/Rules/Proxy.list?v=0"
+ruleset = "https://raw.githubusercontent.com/hmjz100/ACL-Next/main/Rules/Proxy.list?v=1"
 
 [[rulesets]]
 group = "🛩️ 直连"
-ruleset = "https://raw.githubusercontent.com/hmjz100/ACL-Next/main/Rules/Direct.list?v=0"
+ruleset = "https://raw.githubusercontent.com/hmjz100/ACL-Next/main/Rules/Direct.list?v=1"
 
 [[rulesets]]
 group = "🛩️ 直连"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaDomain.list?v=0"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaDomain.list?v=1"
 
 [[rulesets]]
 group = "🛩️ 直连"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaCompanyIp.list?v=0"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaCompanyIp.list?v=1"
 
 [[rulesets]]
 group = "🛩️ 直连"
