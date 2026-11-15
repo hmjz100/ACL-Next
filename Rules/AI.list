@@ -10,3 +10,5 @@ DOMAIN-SUFFIX,redarena.ai
 
 # Edge Copilot
 DOMAIN-SUFFIX,edge.microsoft.com
+DOMAIN-SUFFIX,m365.cloud.microsoft
+DOMAIN-SUFFIX,m365copilotapp.svc.cloud.microsoft
