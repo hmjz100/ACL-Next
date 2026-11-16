@@ -2012,7 +2012,7 @@ ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Rulese
 
 [[rulesets]]
 group = "🛩️ 直连"
-ruleset = "https://raw.githubusercontent.com/hmjz100/ACL-Next/main/Rules/Google_FCM.list?v=1"
+ruleset = "https://raw.githubusercontent.com/hmjz100/ACL-Next/main/Rules/Direct_Google_Firebase-Cloud-Messaging.list?v=1"
 
 [[rulesets]]
 group = "🛩️ 直连"
@@ -2081,6 +2081,10 @@ ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Rulese
 [[rulesets]]
 group = "✈️ 代理"
 ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyGFWlist.list?v=1"
+
+[[rulesets]]
+group = "✈️ 代理"
+ruleset = "https://raw.githubusercontent.com/hmjz100/ACL-Next/main/Rules/Proxy_Google_Firebase-Cloud-Messaging.list?v=1"
 
 [[rulesets]]
 group = "✈️ 代理"

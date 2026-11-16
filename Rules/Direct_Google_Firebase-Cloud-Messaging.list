@@ -13,10 +13,6 @@ DOMAIN,alt6-mtalk.google.com
 DOMAIN,alt7-mtalk.google.com
 DOMAIN,alt8-mtalk.google.com
 
-DOMAIN,android.apis.google.com
-DOMAIN,device-provisioning.googleapis.com
-DOMAIN,firebaseinstallations.googleapis.com
-
 IP-CIDR,108.177.125.188/32
 IP-CIDR,142.250.10.188/32
 IP-CIDR,142.250.31.188/32

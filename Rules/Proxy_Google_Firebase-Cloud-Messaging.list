@@ -1,0 +1,4 @@
+﻿# Google - Firebase Cloud Messaging (FCM)
+DOMAIN,android.apis.google.com
+DOMAIN,device-provisioning.googleapis.com
+DOMAIN,firebaseinstallations.googleapis.com
